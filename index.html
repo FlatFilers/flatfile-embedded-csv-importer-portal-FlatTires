@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Flatfile SDK Demo</title>
+    <meta name="description" content="" />
+
+    <!-- Load the Flatfile SDK -->
+    <script src="https://unpkg.com/@flatfile/sdk/dist/index.js"></script>
+    <!-- end -->
+
+    <link href="assets/img/favicon.ico" rel="icon" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Gothic+A1"
+      rel="stylesheet"
+    />
+    <link href="https://use.typekit.net/dkv2ioo.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link
+      href="assets/css/theme.css"
+      rel="stylesheet"
+      type="text/css"
+      media="all"
+    />
+    <link
+      href="assets/css/custom.css"
+      rel="stylesheet"
+      type="text/css"
+      media="all"
+    />
+
+    <base target="_parent" />
+  </head>
+  <body>
+    <div class="layout layout-nav-top">
+      <div class="navbar navbar-expand-lg sticky-top pt-2 px-4 py-2">
+        <div class="d-flex align-items-center">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbar-collapse"
+            aria-controls="navbar-collapse"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div
+          class="collapse navbar-collapse justify-content-between"
+          id="navbar-collapse"
+        >
+          <img
+            src="https://cdn.glitch.global/28880d19-b2b9-4a51-be86-3c24bf15aa34/Frame%20(1).svg?v=1647617617393"
+            width="40"
+          />
+          <div class="d-lg-flex align-items-center">
+            <form
+              class="form-inline my-lg-1 my-2"
+              data-toggle="tooltip"
+              data-trigger="focus"
+              data-placement="bottom"
+              title="This search box is just for funsies. It's here to show you what your app might look like."
+            >
+              <div class="input-group input-group-dark">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="material-icons">search</i>
+                  </span>
+                </div>
+                <input
+                  type="search"
+                  class="form-control form-control-dark"
+                  placeholder="Search"
+                  aria-label="Search app"
+                />
+              </div>
+            </form>
+            <div class="dropdown mx-lg-2">
+              <button
+                class="btn btn-dark btn-block"
+                type="button"
+                id="import"
+                aria-haspopup="true"
+                aria-expanded="false"
+                data-trigger="manual"
+                data-toggle="tooltip"
+                data-placement="left"
+                title="Step 3: Upload sample contacts"
+              >
+                <i class="material-icons">upload</i> Import contacts
+              </button>
+            </div>
+            <div class="d-none d-lg-block">
+              <div class="dropdown">
+                <a
+                  href="#"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <img
+                    alt="Image"
+                    src="assets/img/avatar-male-4.jpg"
+                    class="avatar"
+                  />
+                </a>
+                <div class="dropdown-menu dropdown-menu-right">
+                  <a
+                    href="#"
+                    class="dropdown-item"
+                    data-toggle="tooltip"
+                    data-placement="left"
+                    title="This menu is just for funsies. It's here to show you what your app might look like."
+                    >Profile</a
+                  >
+                  <a
+                    href="#"
+                    class="dropdown-item"
+                    data-toggle="tooltip"
+                    data-placement="left"
+                    title="This menu is just for funsies. It's here to show you what your app might look like."
+                    >Account Settings</a
+                  >
+                  <a
+                    href="#"
+                    class="dropdown-item"
+                    data-toggle="tooltip"
+                    data-placement="left"
+                    title="This menu is just for funsies. It's here to show you what your app might look like."
+                    >Log Out</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-container">
+        <div class="container-fluid pb-0">
+          <div class="row" style="height: calc(100vh - 73px)">
+            <div class="col-8 px-4 py-3">
+              <div class="content-list">
+                <div class="content-list-body row" id="raw_output">
+                  <div class="row placeholder-card text-center">
+                    <div class="col-12">
+                      <div class="pt-4">
+                        <h1>Welcome to Coconut CRM.</h1>
+                        <h5>
+                          To get started, import all your contacts.
+                        </h5>
+                        <button
+                          class="btn btn-lg btn-dark pulsing-button mt-4"
+                          role="button"
+                          type="button"
+                          id="import_emptystate"
+                          data-toggle="tooltip"
+                          data-placement="bottom"
+                          title="Import the sample contacts you downloaded to see Flatfile in Action."
+                        >
+                          <i class="material-icons">upload</i> Import contacts
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-4 px-3 py-3 bg-gray-dark chat-sidebar">
+              <div
+                id="toast-6"
+                class="toast"
+                role="alert"
+                data-autohide="false"
+              >
+                <div class="toast-body">
+                  🪄&nbsp; <b>Lead source was adjusted.</b> Lead source was
+                  uploaded with abbreviations for each platform. These were
+                  renamed to align with our system.
+                </div>
+              </div>
+              <div
+                id="toast-5"
+                class="toast"
+                role="alert"
+                data-autohide="false"
+              >
+                <div class="toast-body">
+                  🪄&nbsp; <b>Full name was split.</b> Full name was split into
+                  first and last name to align with our system.
+                </div>
+              </div>
+              <div
+                id="toast-4"
+                class="toast"
+                role="alert"
+                data-autohide="false"
+              >
+                <div class="toast-body">
+                  ✅&nbsp; <b>You rock!</b> All of your contacts were imported
+                  and transformed to look exactly like our system needs it.
+                </div>
+              </div>
+              <div
+                id="toast-3"
+                class="toast"
+                role="alert"
+                data-autohide="false"
+              >
+                <div class="toast-header">
+                  <img
+                    class="avatar"
+                    alt="Image"
+                    src="assets/img/avatar-female-4.jpg"
+                    width="40"
+                  />
+                  <strong class="ps-2 mr-auto text-dark">Josie 🌴</strong>
+                  <small>Just now</small>
+                </div>
+                <div class="toast-body">
+                  🪄&nbsp;
+                  <b>If you get stuck, we're here to help.</b> Just close the
+                  importer, send us a message, and later on you can pick up
+                  right where you left off.
+                </div>
+              </div>
+              <div
+                id="toast-2"
+                class="toast"
+                role="alert"
+                data-autohide="false"
+              >
+                <div class="toast-header">
+                  <img
+                    class="avatar"
+                    alt="Image"
+                    src="assets/img/avatar-female-4.jpg"
+                    width="40"
+                  />
+                  <strong class="ps-2 mr-auto text-dark">Josie 🌴</strong>
+                  <small>Just now</small>
+                </div>
+                <div class="toast-body">
+                  😰&nbsp; <b>Is your data messy? Don't fret.</b>
+                  We built a template behind the scenes. It will correct 90% of
+                  your data formats for things like dates, emails, and more.
+                </div>
+              </div>
+              <div
+                id="toast-1"
+                class="toast"
+                role="alert"
+                data-autohide="false"
+              >
+                <div class="toast-header">
+                  <img
+                    class="avatar"
+                    alt="Image"
+                    src="assets/img/avatar-female-4.jpg"
+                    width="40"
+                  />
+                  <strong class="ps-2 mr-auto text-dark">Josie 🌴</strong>
+                  <small>Just now</small>
+                </div>
+                <div class="toast-body">
+                  <b>🎉&nbsp; Welcome! We're so glad you're here.</b>
+                  Without your data, we can't do much. So, let's get started!
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const importer = flatfileImporter("<%= token %>");
+
+      importer.on("init", ({ batchId }) => {
+        console.log(`Batch ${batchId} has been initialized.`);
+        $("#import").tooltip("hide");
+        $("#import_emptystate").tooltip("hide");
+      });
+      importer.on("launch", ({ batchId }) => {
+        console.log(`Batch ${batchId} has been launched.`);
+      });
+      importer.on("error", (error) => {
+        console.error(error);
+      });
+      importer.on("complete", async (payload) => {
+        var tbody = document.getElementById("raw_output");
+        var outputArray = await payload.data();
+        var output = JSON.stringify(await payload.data(), null, 4);
+        var el_up = document.getElementById("raw_output");
+
+        var imgArray = [
+          'avatar-female-1.jpg"',
+          "avatar-male-1.jpg",
+          "avatar-female-2.jpg",
+          "avatar-male-2.jpg",
+          "avatar-female-3.jpg",
+          "avatar-male-3.jpg",
+          "avatar-female-4.jpg",
+          "avatar-female-5.jpg",
+          "avatar-male-5.jpg",
+          "avatar-female-6.jpg",
+          "avatar-male-6.jpg",
+        ];
+        var basePath = "assets/img/";
+
+        function imgRandom() {
+          for (var i = 0; i < 18; i++) {
+            var rand = imgArray[Math.floor(Math.random() * imgArray.length)];
+            image = basePath + rand;
+            return image;
+          }
+        }
+
+        var srcImgArray = [
+          "https://cdn.glitch.global/28880d19-b2b9-4a51-be86-3c24bf15aa34/Facebook.svg?v=1647459257968", //facebook
+          "https://cdn.glitch.global/28880d19-b2b9-4a51-be86-3c24bf15aa34/Google.svg?v=1647459262219", //google
+          "https://cdn.glitch.global/28880d19-b2b9-4a51-be86-3c24bf15aa34/LinkedIn.svg?v=1647459264772", //linkedin
+          "https://cdn.glitch.global/28880d19-b2b9-4a51-be86-3c24bf15aa34/Twitter.svg?v=1647459266976", //twitter
+          "https://cdn.glitch.global/28880d19-b2b9-4a51-be86-3c24bf15aa34/Unknown.svg?v=1647975181691", //unknown
+        ]; //twitter
+
+        function getSourceImage(source) {
+          if (source === "facebook") {
+            image = srcImgArray[0];
+          } else if (source === "google") {
+            image = srcImgArray[1];
+          } else if (source === "linkedIn") {
+            image = srcImgArray[2];
+          } else if (source === "twitter") {
+            image = srcImgArray[3];
+          } else {
+            image = srcImgArray[4];
+          }
+          return image;
+        }
+
+        const placeholder_cards =
+          document.getElementsByClassName("placeholder-card");
+        for (const card of placeholder_cards) {
+          // 👇️ Remove element from DOM
+          card.style.display = "none";
+        }
+        $("#fullname_tooltip").tooltip("show");
+        $("#toast-1").toast("hide");
+        $("#toast-2").toast("hide");
+        $("#toast-3").toast("hide");
+        setTimeout(function () {
+          $("#toast-4").toast("show");
+        }, 1000);
+        setTimeout(function () {
+          $("#toast-5").toast("show");
+        }, 3000);
+        setTimeout(function () {
+          $("#toast-6").toast("show");
+        }, 6000);
+
+        console.log(outputArray);
+        el_up.innerHTML +=
+          '<div class="col-lg-12"><div class="alert alert-success mb-4" role="alert"><b>Yuss! You successfully uploaded ' +
+          outputArray.totalRows +
+          ' contacts.</b> Hover any <img src="https://cdn.glitch.global/28880d19-b2b9-4a51-be86-3c24bf15aa34/Flatfile%20Icons%2032px_magic_wand.svg?v=1650386707348" /> to learn how we automatically adjusted your data to fit our system.</div></div>';
+
+        for (var i = 0; i < outputArray.rows.length; i++) {
+          el_up.innerHTML +=
+            '<div class="col-lg-6"><div class="card"><div class="card-body text-center"><div class="card-title pb-0 mb-0"><div>' +
+            '<img class="avatar avatar-lg me-2" src="' +
+            imgRandom() +
+            '"/>' +
+            '<button class="close float-right pulsing-button-sm position-absolute" data-toggle="tooltip" data-placement="top"' +
+            'title="I know, we didn\'t upload a pic for this demo, but we could have. 😉">' +
+            '<img src="https://cdn.glitch.global/28880d19-b2b9-4a51-be86-3c24bf15aa34/Flatfile%20Icons%2032px_magic_wand.svg?v=1650386707348" /></button></div>' +
+            "<h5>" +
+            outputArray.rows[i].data.firstName +
+            " " +
+            outputArray.rows[i].data.lastName +
+            " " +
+            '<button id="fullname_tooltip" class="close float-right pulsing-button-sm position-absolute" data-toggle="tooltip" data-placement="top"' +
+            'title="Full name: [' +
+            outputArray.rows[i].data.firstName +
+            "] [" +
+            outputArray.rows[i].data.lastName +
+            '] was split into two columns for first and last name automatically with Flatfile Data Hooks.">' +
+            '<img src="https://cdn.glitch.global/28880d19-b2b9-4a51-be86-3c24bf15aa34/Flatfile%20Icons%2032px_magic_wand.svg?v=1650386707348" /></button></h5>' +
+            '<div class="text-body text-center">' +
+            outputArray.rows[i].data.email +
+            '</div><hr><div class="row"><div class="col-6"><div class="text-left fw-bold">Status</div>' +
+            '<div class="subscribed ' +
+            `${outputArray.rows[i].data.optIn ? "" : "disabled"}` +
+            '">' +
+            `${
+              outputArray.rows[i].data.optIn ? "Subscribed" : "Not subscribed"
+            }` +
+            "</div></div>" +
+            '<div class="col-6"><div class="text-left fw-bold">Lead Source</div><div class="lead-source">' +
+            '<img src="' +
+            getSourceImage(outputArray.rows[i].data.source) +
+            '"' +
+            'class="avatar me-1"/>' +
+            outputArray.rows[i].data.source +
+            '<button class="close float-right pulsing-button-sm position-absolute" data-toggle="tooltip" data-placement="top"' +
+            'title="Lead Source was uploaded abbreviated - we fixed it and saved it as: ' +
+            outputArray.rows[i].data.source +
+            '">' +
+            '<img src="https://cdn.glitch.global/28880d19-b2b9-4a51-be86-3c24bf15aa34/Flatfile%20Icons%2032px_magic_wand.svg?v=1650386707348" /></button>' +
+            '</div></div> </div></div></div></div></div>';
+        }
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+
+      document.querySelector("#import").addEventListener("click", async () => {
+        await importer.launch();
+      });
+      document
+        .querySelector("#import_emptystate")
+        .addEventListener("click", async () => {
+          await importer.launch();
+        });
+    </script>
+
+    <!-- Required bootstrap scripts -->
+    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="assets/js/popper.min.js"></script>
+    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
+
+    <script>
+      $(function () {
+        //initiate tooltips
+        console.log("Logged in as: <%= email %>");
+        $('[data-toggle="tooltip"]').tooltip();
+        $("#import").tooltip("show");
+        //open toasts
+        setTimeout(function () {
+          $("#toast-1").toast("show");
+        }, 1000);
+        setTimeout(function () {
+          $("#toast-2").toast("show");
+        }, 7000);
+        setTimeout(function () {
+          $("#toast-3").toast("show");
+        }, 14000);
+      });
+    </script>
+    <script>
+      window.addEventListener(
+        "dragover",
+        function (e) {
+          e = e || event;
+          e.preventDefault();
+        },
+        false
+      );
+
+      window.addEventListener(
+        "drop",
+        function (e) {
+          e = e || event;
+          console.log("dropped");
+
+          e.preventDefault();
+        },
+        false
+      );
+      window.addEventListener("message", function (e) {
+        if (e.data) {
+          window.userEmail = e.data;
+        }
+      });
+    </script>
+  </body>
+</html>
