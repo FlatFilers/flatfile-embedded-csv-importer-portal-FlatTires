@@ -17,8 +17,8 @@
     "ejs": "^3.1.6"
   },
   "engines": {
-    "node": "v18.x",
-    "npm": ">9.x"
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   },
   "repository": {
     "url": "https://glitch.com/edit/#!/glitch-mvp-node"
