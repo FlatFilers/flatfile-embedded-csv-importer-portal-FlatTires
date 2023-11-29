@@ -15,12 +15,15 @@
     importer.on("init", ({ batchId }) => {
       console.log(`Batch ${batchId} has been initialized.`);
     });
+    
     importer.on("launch", ({ batchId }) => {
       console.log(`Batch ${batchId} has been launched.`);
     });
+
     importer.on("error", (error) => {
       console.error(error);
     });
+
     importer.on("complete", async (payload) => {
       var outputArray = await payload.data();
       console.log(outputArray);
@@ -51,6 +54,7 @@
       },
       false
     );
+
     window.addEventListener("message", function (e) {
       if (e.data) {
         window.userEmail = e.data;
