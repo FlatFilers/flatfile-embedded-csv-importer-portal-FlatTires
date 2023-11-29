@@ -8,11 +8,13 @@ const PRIVATE_KEY = process.env.PRIVATE_KEY;
 app.set("view engine", "html");
 app.set("views", __dirname);
 app.use(express.static(__dirname + "/public"));
+app.use("/assets", express.static(__dirname + "/assets"));
 app.engine("html", require("ejs").renderFile);
 
 app.get("/", async (_req, res) => {
   const prefilledEmail = _req.query.userEmail;
   const email = prefilledEmail ? prefilledEmail : "unknown@flatfile.com";
+
   return res.render("index.html", {
     email: email,
     token: jwt.sign(
@@ -24,7 +26,7 @@ app.get("/", async (_req, res) => {
           name: email,
         },
       },
-      PRIVATE_KEY
+      PRIVATE_KEY,
     ),
   });
 });
