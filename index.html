@@ -40,7 +40,12 @@
       type="text/css"
       media="all"
     />
-
+    
+    <!-- Required bootstrap scripts -->
+    <script type="text/javascript" src="./assets/js/jquery.min.js"></script>
+    <script type="text/javascript" src="./assets/js/popper.min.js"></script>
+    <script type="text/javascript" src="./assets/js/bootstrap.js"></script>
+    
     <base target="_parent" />
   </head>
   <body>
@@ -64,7 +69,7 @@
           id="navbar-collapse"
         >
           <img
-            src="./public/img/Frame.svg"
+            src="https://raw.githubusercontent.com/FlatFilers/flatfile-embedded-csv-importer-portal/3ecb1b275e6b3bdaf49d61813f78cfeb40419f4b/assets/img/Frame.svg"
             width="40"
           />
           <div class="d-lg-flex align-items-center">
@@ -287,20 +292,23 @@
         </div>
       </div>
     </div>
+    
     <script>
       const importer = flatfileImporter("<%= token %>");
-
       importer.on("init", ({ batchId }) => {
         console.log(`Batch ${batchId} has been initialized.`);
         $("#import").tooltip("hide");
         $("#import_emptystate").tooltip("hide");
       });
+
       importer.on("launch", ({ batchId }) => {
         console.log(`Batch ${batchId} has been launched.`);
       });
+
       importer.on("error", (error) => {
         console.error(error);
       });
+
       importer.on("complete", async (payload) => {
         var tbody = document.getElementById("raw_output");
         var outputArray = await payload.data();
@@ -429,20 +437,16 @@
       document.querySelector("#import").addEventListener("click", async () => {
         await importer.launch();
       });
+
       document
         .querySelector("#import_emptystate")
         .addEventListener("click", async () => {
           await importer.launch();
         });
     </script>
-
-    <!-- Required bootstrap scripts -->
-    <script type="text/javascript" src="assets/js/jquery.min.js"></script>
-    <script type="text/javascript" src="assets/js/popper.min.js"></script>
-    <script type="text/javascript" src="assets/js/bootstrap.js"></script>
-
-    <script>
-      $(function () {
+    <script >
+      $(()=> {
+        
         //initiate tooltips
         console.log("Logged in as: <%= email %>");
         $('[data-toggle="tooltip"]').tooltip();
@@ -479,11 +483,13 @@
         },
         false
       );
+
       window.addEventListener("message", function (e) {
         if (e.data) {
           window.userEmail = e.data;
         }
       });
     </script>
+    <script type="text/javascript" src="./test.js"></script>
   </body>
 </html>
