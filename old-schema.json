@@ -1,0 +1,51 @@
+{
+  "schema": {
+    "properties": {
+      "name": {
+        "type": "string",
+        "label": "Name"
+      },
+      "firstName": {
+        "type": "string",
+        "label": "First Name"
+      },
+      "lastName": {
+        "type": "string",
+        "label": "Last Name"
+      },
+      "email": {
+        "type": "string",
+        "label": "Email",
+        "format": "email"
+      },
+      "source": {
+        "type": "string",
+        "label": "Source",
+        "default": "unknown",
+        "enum": [
+          "google",
+          "facebook",
+          "linkedIn",
+          "twitter",
+          "direct",
+          "unknown"
+        ],
+        "enumLabel": [
+          "Google",
+          "Facebook",
+          "LinkedIn",
+          "Twitter",
+          "Direct",
+          "Unknown"
+        ]
+      },
+      "subscribed": {
+        "type": "boolean",
+        "label": "Subscribed"
+      }
+    },
+    "type": "object",
+    "required": ["name", "email", "subscribed"],
+    "unique": []
+  }
+}
