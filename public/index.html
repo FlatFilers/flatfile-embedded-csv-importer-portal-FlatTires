@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FlatTires Flatfile Demo!</title>
+    
+    <link rel="stylesheet" type="text/css" href="./styles/index.css" />
+
+  </head>
+  <body>
+    <main class="container">
+      <section class="content">
+        <section id="step-1">
+          <h2>Welcome to Flat Tires!</h2>
+          <p>Today we'll be importing some customer and repair data for the shop! Follow the instructions to get started!</p>
+          <p>Click the buton below to download some sample customer data!</p>
+          <a class="button contrast" href="./files/flatTires_customer_data.xlsx" download>Download Customer Data</a>
+
+          <p>When you're ready, press the next button to move onto the next step!
+          <button id="goto-step-2">Next Step</button>
+        </section>
+
+        <section id="step-2">
+          <h2>It's time to start importing!</h2>
+          <p>Now that you have your sample data, click the button to start importing it to Flatfile!</p>
+          <p>After they're all mapped you'll notice there are two errors, fill those in to clear them!</p>
+          <!-- Button to trigger the modal -->
+          <div>      
+            <button
+              class="contrast"
+              onclick="openFlatfile()"
+            >
+              Start Importing!
+            </button>
+          </div>
+        </section>
+
+        <section id="step-3">
+          <h2>Great! Let's move forward</h2>
+          <p>Now that the data is uploaded to flatfile, we can call that space again and make more edits!</p>
+          <p>Click the button below when you're ready to move on.</p>
+          <button id="goto-step-4">Next Step</button>
+        </section>
+        
+        <section id="step-4">
+          <h2>Now that  the customer data has been imported, it's time to import the repairs!</h2>
+          <p>Click the button below to get the repair data so you can get to importing!</p>
+          <a class="button contrast" href="./files/flatTires_repair_data.xlsx" download>Download Repair Data</a>
+          <p>Click the button below to return to flatfile and get importing!</p>
+          <button id="goto-step-5" onclick="createRepairSheet()">Next Step</button>
+        </section>
+        
+        <section id="flatfileContainer">
+          <div id="flatfile_iFrameContainer"></div>
+        </section>
+      </section>
+    </main>
+    <script type="module" src="../src/client.js"></script>
+  </body>
+</html>
