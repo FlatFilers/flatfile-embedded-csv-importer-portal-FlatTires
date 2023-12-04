@@ -11,14 +11,14 @@ body {
 
 .container {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  padding-left: 2.5em;
   height: 100%;
 }
 
 .content {
   /* Adjust the width and height as needed */
-  width: 800px;
+  width: 90%;
   height: 200px;
   padding: 0 20px 0 50px;
 }
@@ -47,12 +47,8 @@ body {
 } */
 
 /* A div around the iframe that contains Flatfile */
-/* .flatfile_iframe-wrapper {
-} */
 
 /* The actual iframe that contains Flatfile */
-/* #flatfile_iframe {
-} */
 
 /* Begin style overrides for when Flatfile is displayed as a modal */
 
@@ -144,6 +140,11 @@ body {
 /* .ff_error_text {
 }*/
 
+.flatfile_iframe-wrapper,
+#flatfile_iframe {
+  width: 100% !important;
+}
+
 section.content > section {
   display: none;
 }
@@ -165,4 +166,6 @@ section.content > section {
 }
 
 #flatfileContainer.currentStep {
+  display: block;
+  margin: 1em 0;
 }

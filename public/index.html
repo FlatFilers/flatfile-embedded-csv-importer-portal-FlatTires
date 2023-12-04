@@ -17,8 +17,8 @@
           <p>Click the buton below to download some sample customer data!</p>
           <a class="btn contrast" href="./files/flatTires_customer_data.xlsx" download>Download Customer Data</a>
 
-          <p>When you're ready, press the next button to move onto the next step!
-          <button id="goto-step-2">Next Step</button>
+          <p>When you're ready, press the next button to move onto the next step!</p>
+          <button class="btn contrast" id="goto-step-2">Next Step</button>
         </section>
 
         <section id="step-2">
@@ -28,8 +28,8 @@
           <!-- Button to trigger the modal -->
           <div>      
             <button
+              id="openFlatfile"
               class="contrast"
-              onclick="openFlatfile()"
             >
               Start Importing!
             </button>
@@ -38,17 +38,22 @@
 
         <section id="step-3">
           <h2>Great! Let's move forward</h2>
-          <p>Now that the data is uploaded to flatfile, we can call that space again and make more edits!</p>
+          <p>Now that the data is uploaded to flatfile, we can move on and add more data!</p>
           <p>Click the button below when you're ready to move on.</p>
-          <button id="goto-step-4">Next Step</button>
+          <button class="btn contrast" id="goto-step-4">Next Step</button>
         </section>
         
         <section id="step-4">
           <h2>Now that  the customer data has been imported, it's time to import the repairs!</h2>
           <p>Click the button below to get the repair data so you can get to importing!</p>
           <a class="button contrast" href="./files/flatTires_repair_data.xlsx" download>Download Repair Data</a>
-          <p>Click the button below to return to flatfile and get importing!</p>
-          <button id="goto-step-5" onclick="createRepairSheet()">Next Step</button>
+          <p>Once the data is uploaded, you'll be able to move forward by clicking this button!</p>
+          <button class="btn contrast" id="goto-step-5" disabled>Next Step</button>
+        </section>
+
+        <section id="step-5">
+          <h2>Great! All your data is now uploaded!</h2>
+          <p>Notice how your customerId column in Repairs linked up with your Customer Id Column in Customers! You can establish relationships across sheets quickly and easily using our blueprint workbook generation schema!</p>
         </section>
         
         <section id="flatfileContainer">
