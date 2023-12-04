@@ -33,7 +33,6 @@ window.counters = {
 };
 
 window.counters.registerCustomerListener((val) => {
-  console.log("customer commits: ", val);
   if (val >= 3) {
     stepTwoContainer.classList.remove("currentStep");
     stepThreeContainer.classList.add("currentStep");
@@ -42,7 +41,6 @@ window.counters.registerCustomerListener((val) => {
 
 const stepFiveButton = document.querySelector("#goto-step-5");
 window.counters.registerRepairListener((val) => {
-  console.log("repair commits: ", val);
   stepFiveButton.removeAttribute("disabled");
 });
 
@@ -55,7 +53,6 @@ const flatfileContainer = document.querySelector("#flatfileContainer");
 
 const openFlatfileButton = document.querySelector("#openFlatfile");
 openFlatfileButton.addEventListener("click", () => {
-  console.log(openFlatfileButton, flatfileContainer);
   flatfileContainer.classList.add("currentStep");
   openFlatfileButton.setAttribute("disabled", true);
   openFlatfileButton.innerText = "Flatfile Opened";

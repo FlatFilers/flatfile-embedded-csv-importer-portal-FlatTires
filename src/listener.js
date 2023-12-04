@@ -3,15 +3,8 @@ import api from "@flatfile/api";
 import { bulkRecordHook } from "@flatfile/plugin-record-hook";
 
 export const listener = FlatfileListener.create((listener) => {
-  listener.on("**", (event) => {
-    // console.log(event)
-    //console.log(event.topic);
-    if (event.topic === "commit:created") console.log(event);
-  });
-
   listener.on("workbook:created", async (event) => {
     window.spaceOptions = event.context;
-    console.log(window.spaceOptions);
   });
 
   listener.on("commit:created", (event) => {
@@ -59,8 +52,6 @@ export const listener = FlatfileListener.create((listener) => {
         );
         return record;
       });
-
-      console.log("returning");
       return recordHooks;
     }),
   );
