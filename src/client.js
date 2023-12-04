@@ -1,7 +1,6 @@
 import { startFlatfile } from "@flatfile/javascript";
 import { workbook } from "./workbook";
 import { listener } from "./listener";
-import api from "@flatfile/api";
 
 //create a new space in modal
 window.openFlatfile = () => {
@@ -28,10 +27,4 @@ window.openFlatfile = () => {
   };
 
   startFlatfile(flatfileOptions);
-};
-
-window.createRepairSheet = () => {
-  const { workbookId } = window.spaceOptions;
-  console.log(workbookId);
-  api.workbooks.update(workbookId);
 };

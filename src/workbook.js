@@ -54,16 +54,16 @@ export const workbook = {
           type: "string",
           label: "Zip Code",
         },
-        {
-          key: "totalCostOfRepairs",
-          type: "reference",
-          label: "Total Cost of Repairs",
-          config: {
-            ref: "repairs",
-            key: "totalCostOfRepairs",
-            relationship: "has-one",
-          },
-        },
+        // {
+        //   key: "totalCostOfRepairs",
+        //   type: "reference",
+        //   label: "Total Cost of Repairs",
+        //   config: {
+        //     ref: "repairs",
+        //     key: "totalCostOfRepairs",
+        //     relationship: "has-many",
+        //   },
+        // },
       ],
     },
     {

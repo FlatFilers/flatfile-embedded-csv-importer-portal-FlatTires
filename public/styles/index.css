@@ -143,3 +143,26 @@ body {
 /* The description text you see in the error component */
 /* .ff_error_text {
 }*/
+
+section.content > section {
+  display: none;
+}
+
+[id^="step"].currentStep {
+  display: block;
+}
+
+#step-1.currentStep {
+}
+
+#step-2.currentStep {
+}
+
+#step-3.currentStep {
+}
+
+#step-4.currentStep {
+}
+
+#flatfileContainer.currentStep {
+}
