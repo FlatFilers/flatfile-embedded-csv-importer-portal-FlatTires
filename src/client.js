@@ -5,7 +5,8 @@ import { listener } from "./listener";
 
 //create a new space in modal
 window.openFlatfile = () => {
-  const { publishableKey, environmentId } = process.env;
+  const publishableKey = "pk_6e0577bd434b4f989c3add5ad4d9feaf";
+  const environmentId = "us_env_1ejus9hB";
   if (!publishableKey && !environmentId) {
     throw new Error(
       "You must provide a publishable key and an environment ID - pass through in index.html",
