@@ -166,8 +166,8 @@ export const listener = FlatfileListener.create((listener) => {
         const jobBody = {
           outcome: {
             message: error.message,
+            acknowledge: true,
           },
-          acknowledge: true,
         };
         if (spaceId) {
           jobBody.outcome.next = {
