@@ -1,12 +1,11 @@
 // Containers
-const mainContainer = document.querySelector(
-  "main.container > section.content",
-);
+const mainContainer = document.querySelector("#demo-container");
 const stepOneContainer = mainContainer.querySelector("#step-1");
 const stepTwoContainer = mainContainer.querySelector("#step-2");
 const stepThreeContainer = mainContainer.querySelector("#step-3");
 const stepFourContainer = mainContainer.querySelector("#step-4");
 const stepFiveContainer = mainContainer.querySelector("#step-5");
+const stepSixContainer = mainContainer.querySelector("#step-6");
 
 // Buttons
 const stepOneButton = mainContainer.querySelector("#goto-step-2");
@@ -16,6 +15,8 @@ const stepFiveButton = mainContainer.querySelector("#goto-step-5");
 // Flatfile
 const openFlatfileButton = mainContainer.querySelector("#openFlatfile");
 const flatfileContainer = mainContainer.querySelector("#flatfileContainer");
+
+const cardContainer = mainContainer.querySelector("#demo-cards-container");
 
 // Counters & Listeners
 window.counters = {
@@ -44,6 +45,19 @@ window.counters = {
   registerRepairListener: function (listener) {
     this.repairListener = listener;
   },
+
+  submissionsInternal: 0,
+  submissionListener: function (val) {},
+  set submissions(val) {
+    this.submissionsInternal = val;
+    this.submissionListener(val);
+  },
+  get submissions() {
+    return this.submissionsInternal;
+  },
+  registersubmissionListener: function (listener) {
+    this.submissionListener = listener;
+  },
 };
 
 window.counters.registerCustomerListener((val) => {
@@ -55,6 +69,12 @@ window.counters.registerCustomerListener((val) => {
 
 window.counters.registerRepairListener((val) => {
   stepFiveButton.removeAttribute("disabled");
+});
+
+window.counters.registersubmissionListener((val) => {
+  stepFiveContainer.classList.remove("currentStep");
+  stepSixContainer.classList.add("currentStep");
+  const { flatfileResponseData } = window;
 });
 
 // Events

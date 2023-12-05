@@ -10,7 +10,7 @@
   </head>
   <body>
     <main class="container">
-      <section class="content">
+      <section id="demo-container" class="content">
         <section id="step-1" class="currentStep">
           <h2>Welcome to Flat Tires!</h2>
           <p>Today we'll be importing some customer and repair data for the shop! Follow the instructions to get started!</p>
@@ -52,11 +52,20 @@
         <section id="step-5">
           <h2>Great! All your data is now uploaded!</h2>
           <p>Notice how your customerId column in Repairs linked up with your Customer Id Column in Customers! You can establish relationships across sheets quickly and easily using our blueprint workbook generation schema!</p>
+          <p>Now submit your data to the FlatTires App with the button in the top right corner of the flatfile embed!</p>
+        </section>
+
+        <section id="step-6">
+          <h2>Here's some of your data!</h2>
+          <section id="demo-cards-container"></section>
         </section>
         
         <section id="flatfileContainer">
           <div id="flatfile_iFrameContainer"></div>
         </section>
+      </section>
+      <section id="toast-container">
+
       </section>
     </main>
     <script type="module" src="../src/client.js"></script>
