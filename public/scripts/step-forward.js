@@ -1,9 +1,20 @@
+// Containers
 const stepOneContainer = document.querySelector("#step-1");
-const stepOneButton = document.querySelector("#goto-step-2");
 const stepTwoContainer = document.querySelector("#step-2");
 const stepThreeContainer = document.querySelector("#step-3");
 const stepFourContainer = document.querySelector("#step-4");
+const stepFiveContainer = document.querySelector("#step-5");
 
+// Buttons
+const stepOneButton = document.querySelector("#goto-step-2");
+const stepFourButton = document.querySelector("#goto-step-4");
+const stepFiveButton = document.querySelector("#goto-step-5");
+
+// Flatfile
+const openFlatfileButton = document.querySelector("#openFlatfile");
+const flatfileContainer = document.querySelector("#flatfileContainer");
+
+// Counters & Listeners
 window.counters = {
   customerCommitsInternal: 0,
   customerListener: function (val) {},
@@ -39,19 +50,16 @@ window.counters.registerCustomerListener((val) => {
   }
 });
 
-const stepFiveButton = document.querySelector("#goto-step-5");
 window.counters.registerRepairListener((val) => {
   stepFiveButton.removeAttribute("disabled");
 });
 
+// Events
 stepOneButton.addEventListener("click", () => {
   stepOneContainer.classList.remove("currentStep");
   stepTwoContainer.classList.add("currentStep");
 });
 
-const flatfileContainer = document.querySelector("#flatfileContainer");
-
-const openFlatfileButton = document.querySelector("#openFlatfile");
 openFlatfileButton.addEventListener("click", () => {
   flatfileContainer.classList.add("currentStep");
   openFlatfileButton.setAttribute("disabled", true);
@@ -59,13 +67,10 @@ openFlatfileButton.addEventListener("click", () => {
   window.openFlatfile();
 });
 
-const stepFourButton = document.querySelector("#goto-step-4");
 stepFourButton.addEventListener("click", () => {
   stepThreeContainer.classList.remove("currentStep");
   stepFourContainer.classList.add("currentStep");
 });
-
-const stepFiveContainer = document.querySelector("#step-5");
 
 stepFiveButton.addEventListener("click", () => {
   stepFourContainer.classList.remove("currentStep");
