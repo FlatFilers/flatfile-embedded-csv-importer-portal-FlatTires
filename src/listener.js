@@ -5,8 +5,6 @@ import { responseRejectionHandler } from "@flatfile/util-response-rejection";
 import { bulkRecordHook } from "@flatfile/plugin-record-hook";
 
 export const listener = FlatfileListener.create((listener) => {
-  listener.on("**", (e) => console.log(e));
-
   listener.on("workbook:created", async (event) => {
     window.spaceOptions = event.context;
   });
@@ -84,8 +82,6 @@ export const listener = FlatfileListener.create((listener) => {
           progress: 10,
         });
 
-        console.log(JSON.parse(JSON.stringify(sheets)));
-
         if (!sheets[0].records || sheets[0].records.length <= 0) {
           throw {
             message:
@@ -145,7 +141,8 @@ export const listener = FlatfileListener.create((listener) => {
             });
           }
           window.flatfileResponseData = sheets;
-          window.counters.submissions = window.counters.submissions + 1;
+          const increments = window.counters.submissions;
+          window.counters.submissions = increments + 1;
           return await api.jobs.complete(jobId, {
             outcome: {
               message:
@@ -165,19 +162,19 @@ export const listener = FlatfileListener.create((listener) => {
       } catch (error) {
         console.log(`webhook.site[error]:`, JSON.parse(JSON.stringify(error)));
 
-        const spaceId = error.sheet.id || "";
-        console.log(spaceId);
-        await api.jobs.fail(jobId, {
+        const spaceId = error?.sheet?.id ? error.sheet.id : undefined;
+        const jobBody = {
           outcome: {
             message: error.message,
-            next: spaceId
-              ? {
-                  type: "id",
-                  id: spaceId,
-                }
-              : {},
           },
-        });
+        };
+        if (spaceId) {
+          jobBody.next = {
+            type: "id",
+            id: spaceId,
+          };
+        }
+        await api.jobs.fail(jobId, jobBody);
       }
     },
   );

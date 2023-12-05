@@ -73,8 +73,46 @@ window.counters.registerRepairListener((val) => {
 
 window.counters.registersubmissionListener((val) => {
   stepFiveContainer.classList.remove("currentStep");
-  stepSixContainer.classList.add("currentStep");
+  if (!window.flatfileResponseData) return;
   const { flatfileResponseData } = window;
+  const cards = [];
+
+  for (let i = 0; i <= 5; i++) {
+    const customer = flatfileResponseData[0].records[i];
+    const customerId = customer.values.customerId.value;
+    const repairs = flatfileResponseData[1].records.filter((r) => {
+      return r?.values?.customerId?.value === customerId;
+    });
+    let total = 0;
+    repairs.forEach((r) => {
+      total += parseFloat(r.values.totalCostOfRepairs.value);
+    });
+    let card = `<div class="demo-card">`;
+    const cardHeader = `
+      <div class="demo-card-header">
+        ${customer.values.firstName.value} ${customer.values.lastName.value}
+      </div>
+    `;
+    const cardBody = `
+      <div class="demo-card-body">
+        <p>Email Address: ${customer.values.email.value}</p>
+        <p>Phone Number: ${customer.values.phone.value}</p>
+        <p>Address: ${customer.values.street.value}, ${customer.values.city.value}, ${customer.values.state.value}, ${customer.values.zip.value}</p>
+        <p>Total Repairs: $${total}</p>
+      </div>
+    `;
+
+    card += cardHeader;
+    card += cardBody;
+    card += "</div>";
+    cards.push(card);
+  }
+  const cardsContainer = stepSixContainer.querySelector(
+    "#demo-cards-container",
+  );
+  cardsContainer.innerHTML = `${cards.join("")}`;
+  stepSixContainer.classList.add("currentStep");
+  flatfileContainer.classList.remove("currentStep");
 });
 
 // Events

@@ -171,3 +171,24 @@ section.content > section {
   display: block;
   margin: 1em 0;
 }
+
+#demo-cards-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.demo-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 1em 0;
+  padding: 1em;
+  border-radius: 5px;
+  background-color: white;
+  color: var(--ff-text-color);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 45%;
+}
