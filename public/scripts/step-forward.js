@@ -1,18 +1,21 @@
 // Containers
-const stepOneContainer = document.querySelector("#step-1");
-const stepTwoContainer = document.querySelector("#step-2");
-const stepThreeContainer = document.querySelector("#step-3");
-const stepFourContainer = document.querySelector("#step-4");
-const stepFiveContainer = document.querySelector("#step-5");
+const mainContainer = document.querySelector(
+  "main.container > section.content",
+);
+const stepOneContainer = mainContainer.querySelector("#step-1");
+const stepTwoContainer = mainContainer.querySelector("#step-2");
+const stepThreeContainer = mainContainer.querySelector("#step-3");
+const stepFourContainer = mainContainer.querySelector("#step-4");
+const stepFiveContainer = mainContainer.querySelector("#step-5");
 
 // Buttons
-const stepOneButton = document.querySelector("#goto-step-2");
-const stepFourButton = document.querySelector("#goto-step-4");
-const stepFiveButton = document.querySelector("#goto-step-5");
+const stepOneButton = mainContainer.querySelector("#goto-step-2");
+const stepFourButton = mainContainer.querySelector("#goto-step-4");
+const stepFiveButton = mainContainer.querySelector("#goto-step-5");
 
 // Flatfile
-const openFlatfileButton = document.querySelector("#openFlatfile");
-const flatfileContainer = document.querySelector("#flatfileContainer");
+const openFlatfileButton = mainContainer.querySelector("#openFlatfile");
+const flatfileContainer = mainContainer.querySelector("#flatfileContainer");
 
 // Counters & Listeners
 window.counters = {

@@ -15,9 +15,9 @@ window.openFlatfile = () => {
     environmentId,
     workbook,
     listener,
-    sidebarConfig: {
-      showSidebar: true,
-    },
+    // sidebarConfig: {
+    //   showSidebar: false,
+    // },
     themeConfig: {
       primaryColor: "red",
       textColor: "white",

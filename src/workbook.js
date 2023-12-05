@@ -130,14 +130,17 @@ export const workbook = {
     {
       operation: "submitActionFg",
       mode: "foreground",
-      label: "Submit foreground",
+      label: "Submit to FlatTires",
       description: "Submit data to webhook.site",
       primary: true,
-    },
-    {
-      operation: "updateCustomerCosts",
-      mode: "foreground",
-      label: "Update totalCostOfRepairs",
+      constraints: [
+        {
+          type: "hasAllValid",
+        },
+      ],
     },
   ],
+  settings: {
+    trackChanges: true,
+  },
 };
