@@ -33,6 +33,6 @@ window.openFlatfile = () => {
       },
     },
   };
-
+  window.toasts.hideStepOneToasts();
   startFlatfile(flatfileOptions);
 };

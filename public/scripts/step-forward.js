@@ -1,26 +1,22 @@
 // Containers
 const mainContainer = document.querySelector("#demo-container");
-const stepOneContainer = mainContainer.querySelector("#step-1");
-const stepTwoContainer = mainContainer.querySelector("#step-2");
-const stepThreeContainer = mainContainer.querySelector("#step-3");
-const stepFourContainer = mainContainer.querySelector("#step-4");
-const stepFiveContainer = mainContainer.querySelector("#step-5");
-const stepSixContainer = mainContainer.querySelector("#step-6");
-const downloadModal = maincontainer.querySelector("#downloadModal");
+// const stepOneContainer = mainContainer.querySelector("#step-1");
+// const stepTwoContainer = mainContainer.querySelector("#step-2");
+// const stepThreeContainer = mainContainer.querySelector("#step-3");
+// const stepFourContainer = mainContainer.querySelector("#step-4");
+// const stepFiveContainer = mainContainer.querySelector("#step-5");
+// const stepSixContainer = mainContainer.querySelector("#step-6");
 
 // Buttons
-const downloadModalCloseButton = maincontainer.querySelector(
-  "#closeDownloadModal",
-);
-const stepOneButton = mainContainer.querySelector("#goto-step-2");
-const stepFourButton = mainContainer.querySelector("#goto-step-4");
-const stepFiveButton = mainContainer.querySelector("#goto-step-5");
+// const stepOneButton = mainContainer.querySelector("#goto-step-2");
+// const stepFourButton = mainContainer.querySelector("#goto-step-4");
+// const stepFiveButton = mainContainer.querySelector("#goto-step-5");
 
 // Flatfile
 const openFlatfileButton = mainContainer.querySelector("#openFlatfile");
 const flatfileContainer = mainContainer.querySelector("#flatfileContainer");
 
-const cardContainer = mainContainer.querySelector("#demo-cards-container");
+// const cardContainer = mainContainer.querySelector("#demo-cards-container");
 
 // Counters & Listeners
 window.counters = {
@@ -65,19 +61,31 @@ window.counters = {
 };
 
 window.counters.registerCustomerListener((val) => {
+  if (val === 1) {
+    window.toasts.showStepThreeToasts();
+  }
   if (val >= 3) {
-    stepTwoContainer.classList.remove("currentStep");
-    stepThreeContainer.classList.add("currentStep");
+    // stepTwoContainer.classList.remove("currentStep");
+    // stepThreeContainer.classList.add("currentStep");
+    window.toasts.hideStepTwoToasts();
+    window.toasts.hideStepThreeToasts();
+    window.toasts.showStepFourToasts();
+    setTimeout(window.toasts.hideStepFourToasts, 3000);
+    setTimeout(window.toasts.showStepFiveToasts, 3000);
   }
 });
 
 window.counters.registerRepairListener((val) => {
-  stepFiveButton.removeAttribute("disabled");
+  // stepFiveButton.removeAttribute("disabled");
+  window.toasts.hideStepFiveToasts();
+  window.toasts.showStepSixToasts();
 });
 
 window.counters.registersubmissionListener((val) => {
-  stepFiveContainer.classList.remove("currentStep");
+  // stepFiveContainer.classList.remove("currentStep");
   if (!window.flatfileResponseData) return;
+  window.toasts.hideAllToasts();
+  window.toasts.showStepSevenToasts();
   const { flatfileResponseData } = window;
   const cards = [];
   const length = Math.min(6, flatfileResponseData[0].records.length);
@@ -124,35 +132,37 @@ window.counters.registersubmissionListener((val) => {
     card += "</div>";
     cards.push(card);
   }
-  const cardsContainer = stepSixContainer.querySelector(
-    "#demo-cards-container",
-  );
+  const cardsContainer = mainContainer.querySelector("#demo-cards-container");
   cardsContainer.innerHTML = `${cards.join("")}`;
   document
     .querySelectorAll(".currentStep")
     .forEach((el) => el.classList.remove("currentStep"));
-  stepSixContainer.classList.add("currentStep");
+  cardsContainer.classList.add("currentStep");
 });
+
+window.toasts.showStepOneToasts();
 
 // Events
-stepOneButton.addEventListener("click", () => {
-  stepOneContainer.classList.remove("currentStep");
-  stepTwoContainer.classList.add("currentStep");
-});
-
+// stepOneButton.addEventListener("click", () => {
+//   console.log("test");
+//   stepOneContainer.classList.remove("currentStep");
+//   stepTwoContainer.classList.add("currentStep");
+// });
 openFlatfileButton.addEventListener("click", () => {
   flatfileContainer.classList.add("currentStep");
   openFlatfileButton.setAttribute("disabled", true);
   openFlatfileButton.innerText = "Flatfile Opened";
+  window.toasts.hideStepOneToasts();
+  window.toasts.showStepTwoToasts();
   window.openFlatfile();
 });
 
-stepFourButton.addEventListener("click", () => {
-  stepThreeContainer.classList.remove("currentStep");
-  stepFourContainer.classList.add("currentStep");
-});
+// stepFourButton.addEventListener("click", () => {
+//   stepThreeContainer.classList.remove("currentStep");
+//   stepFourContainer.classList.add("currentStep");
+// });
 
-stepFiveButton.addEventListener("click", () => {
-  stepFourContainer.classList.remove("currentStep");
-  stepFiveContainer.classList.add("currentStep");
-});
+// stepFiveButton.addEventListener("click", () => {
+//   stepFourContainer.classList.remove("currentStep");
+//   stepFiveContainer.classList.add("currentStep");
+// });

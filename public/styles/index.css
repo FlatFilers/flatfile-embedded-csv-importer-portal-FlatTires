@@ -14,6 +14,7 @@ body {
   display: flex;
   align-items: flex-start;
   height: 100%;
+  gap: 1em;
 }
 
 .content {
@@ -145,12 +146,42 @@ body {
   width: 100% !important;
 }
 
-section.content > section {
+#toast-container,
+#demo-container {
+  transition: all 0.5s ease;
+}
+
+section.content > section:not(.currentStep) {
   display: none;
 }
 
-[id^="step"].currentStep {
+/* [id^="step"].currentStep {
   display: block;
+} */
+
+.starting-step {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+#toast-container {
+  width: 30%;
+}
+
+aside[id^="toast"]:not(.show) {
+  display: none;
+}
+
+aside[id^="toast"].show {
+  display: block;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  padding: 1em;
+  width: 15em;
+  margin: 1em 0;
 }
 
 #step-1.currentStep {

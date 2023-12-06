@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FlatTires Flatfile Demo!</title>
+
+    <script type="application/javaScript" src="../public/scripts/jquery-3.6.0.min.js"></script>
+    <script type="application/javaScript" src="../public/scripts/bootstrap.bundle.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./styles/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./styles/index.css" />
+
+  </head>
+  <body>
+    <main class="container">
+      <section id="demo-container" class="content">
+        <section id="step-1" class="currentStep">
+          <h2>Welcome to Flat Tires!</h2>
+          <!-- <p>Today we'll be importing some customer and repair data for the shop!</p> -->
+          <p>When you're ready, press the next button to get started!</p>
+          <button class="contrast" id="goto-step-2">Next Step</button>
+        </section>
+
+        <section id="step-2">
+          <h2>It's time to start importing!</h2>
+          <p>After they're all mapped you'll notice there are two errors, fill those in to clear them!</p>
+          <!-- Button to trigger the modal -->
+          <div>      
+            <button
+              id="openFlatfile"
+              class="contrast"
+            >
+              Start Importing!
+            </button>
+          </div>
+        </section>
+
+        <section id="step-3">
+          <h2>Great! Let's move forward</h2>
+          <p>Now that the data is uploaded to flatfile, we can move on and add more data!</p>
+          <p>Click the button below when you're ready to move on.</p>
+          <button class="contrast" id="goto-step-4">Next Step</button>
+        </section>
+        
+        <section id="step-4">
+          <h2>Now that  the customer data has been imported, it's time to import the repairs!</h2>
+          <p>Once the data is uploaded, you'll be able to move forward by clicking this button!</p>
+          <button class="contrast" id="goto-step-5" disabled>Next Step</button>
+        </section>
+
+        <section id="step-5">
+          <h2>Great! All your data is now uploaded!</h2>
+          <p>Notice how your customerId column in Repairs linked up with your Customer Id Column in Customers! You can establish relationships across sheets quickly and easily using our blueprint workbook generation schema!</p>
+          <p>Now submit your data to the FlatTires App with the button in the top right corner of the flatfile embed!</p>
+        </section>
+
+        <section id="step-6">
+          <h2>Here's some of your data!</h2>
+          <section id="demo-cards-container"></section>
+        </section> 
+        
+        <section id="flatfileContainer">
+          <div id="flatfile_iFrameContainer"></div>
+        </section>
+      </section>
+
+      <section id="toast-container">
+        <aside id="toast-1" >
+          <h2>Welcome to Flat Tires!</h2>
+          <p>Today we'll be importing some customer repair data for the shop!</p>
+        </aside>
+        <aside id="toast-2" >
+          <p>Follow the instructions to the left to get started!</p>
+        </aside>
+      </section>
+    </main>
+    <script type="module" src="../src/client.js"></script>
+    <script defer type="application/javaScript" src="./scripts/toasts.js"></script>
+    <script defer type="application/javaScript" src="./scripts/step-forward.js"></script>
+    
+  </body>
+</html>

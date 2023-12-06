@@ -15,18 +15,8 @@
   <body>
     <main class="container">
       <section id="demo-container" class="content">
-        <section id="step-1" class="currentStep">
-          <h2>Welcome to Flat Tires!</h2>
-          <p>Today we'll be importing some customer and repair data for the shop! Follow the instructions to get started!</p>
-          <p>When you're ready, press the next button to get started!</p>
-          <button class="contrast" id="goto-step-2">Next Step</button>
-        </section>
-
-        <section id="step-2">
-          <h2>It's time to start importing!</h2>
-          <p>Now that you have your sample data, click the button to start importing it to Flatfile!</p>
-          <p>After they're all mapped you'll notice there are two errors, fill those in to clear them!</p>
-          <!-- Button to trigger the modal -->
+        <section id="step-1" class="starting-step currentStep">    
+          <h3>Welcome to Flatfile!</h3>  
           <div>      
             <button
               id="openFlatfile"
@@ -36,40 +26,59 @@
             </button>
           </div>
         </section>
-
-        <section id="step-3">
-          <h2>Great! Let's move forward</h2>
-          <p>Now that the data is uploaded to flatfile, we can move on and add more data!</p>
-          <p>Click the button below when you're ready to move on.</p>
-          <button class="contrast" id="goto-step-4">Next Step</button>
-        </section>
-        
-        <section id="step-4">
-          <h2>Now that  the customer data has been imported, it's time to import the repairs!</h2>
-          <p>Once the data is uploaded, you'll be able to move forward by clicking this button!</p>
-          <button class="contrast" id="goto-step-5" disabled>Next Step</button>
-        </section>
-
-        <section id="step-5">
-          <h2>Great! All your data is now uploaded!</h2>
-          <p>Notice how your customerId column in Repairs linked up with your Customer Id Column in Customers! You can establish relationships across sheets quickly and easily using our blueprint workbook generation schema!</p>
-          <p>Now submit your data to the FlatTires App with the button in the top right corner of the flatfile embed!</p>
-        </section>
-
-        <section id="step-6">
-          <h2>Here's some of your data!</h2>
-          <section id="demo-cards-container"></section>
-        </section>
-        
         <section id="flatfileContainer">
           <div id="flatfile_iFrameContainer"></div>
         </section>
+        <section id="demo-cards-container"></section>
       </section>
-      <section id="toast-container">
 
+      <section id="toast-container">
+        <aside id="toast-1" >
+          <h2>Welcome to Flat Tires!</h2>
+          <p>Today we'll be importing some customer repair data for the shop!</p>
+        </aside>
+        <aside id="toast-2" >
+          <p>Follow the instructions to the left to get started!</p>
+        </aside>
+        <aside id="toast-3">
+          <h2>Let's Get Uploading!</h2>
+          <p>Once Flatfile is open, click the button to add a file (or drag & drop)!</p>
+        </aside>
+        <aside id="toast-4">
+          <p>Now that the data is uploaded, you'll see two errors in the first couple rows. Fix those to move forward!</p>
+        </aside>
+        <aside id="toast-5">
+          <h2>Great!</h2>
+          <p>Click the repairs tab to step forward!</p>
+        </aside>
+        <aside id="toast-6">
+          <h2>Time to upload the repairs data!</h2>
+          <p>Now let's move on to uploading the repairs data!</p>
+        </aside>
+        <aside id="toast-7">
+          <h2>You can use the same file!</h2>
+          <p>Upload the same file you imported the customers data from, and just upload the repairs sheet instead of the customers sheet!</p>
+        </aside>
+        <aside id="toast-8">
+          <h2>Almost Done!</h2>
+          <p>Now that both the repair and customer data is uploaded, all that's left is to export it for your use-case!</p>
+        </aside>
+        <aside id="toast-9">
+          <p>Click the "Submit to FlatTires" button and export your data!</p>
+        </aside>
+        <aside id="toast-10">
+          <h2>Here's your data!</h2>
+          <p>This is only the start to what you can do with Flatfile!</p>
+        </aside>
+        <aside id="toast-11">
+          <h2>Reach out Today!</h2>
+          <p>Reach out for a consult today and learn more of what we can do for you!</p>
+        </aside>
       </section>
     </main>
     <script type="module" src="../src/client.js"></script>
+    <script defer type="application/javaScript" src="./scripts/toasts.js"></script>
     <script defer type="application/javaScript" src="./scripts/step-forward.js"></script>
+    
   </body>
 </html>
