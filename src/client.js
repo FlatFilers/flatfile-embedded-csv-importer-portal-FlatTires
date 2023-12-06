@@ -13,21 +13,24 @@ window.openFlatfile = () => {
     );
   }
   const flatfileOptions = {
+    name: "FlatTires Flatfile Demo",
+    // themeConfig: {
+    //   primaryColor: "red",
+    //   textColor: "white",
+    //   logo: "https://images.ctfassets.net/hjneo4qi4goj/gL6Blz3kTPdZXWknuIDVx/7bb7c73d93b111ed542d2ed426b42fd5/flatfile.svg",
+    // },
+    // sidebarConfig: {
+    //   showSidebar: false,
+    // },
     publishableKey,
     environmentId,
     workbook,
     listener,
-    // sidebarConfig: {
-    //   showSidebar: false,
-    // },
-    themeConfig: {
-      primaryColor: "red",
-      textColor: "white",
-      logo: "https://images.ctfassets.net/hjneo4qi4goj/gL6Blz3kTPdZXWknuIDVx/7bb7c73d93b111ed542d2ed426b42fd5/flatfile.svg",
-    },
     displayAsModal: false,
     spaceBody: {
-      metadata: { showSpaceInfo: false },
+      metadata: {
+        showSpaceInfo: false,
+      },
     },
   };
 

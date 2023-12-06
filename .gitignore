@@ -4,3 +4,4 @@ dist
 .codesandbox
 .devcontainer
 .parcel-cache
+*.debug.js
