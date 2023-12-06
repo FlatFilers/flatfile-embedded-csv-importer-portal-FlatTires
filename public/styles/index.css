@@ -12,15 +12,12 @@ body {
 .container {
   display: flex;
   align-items: flex-start;
-  padding-left: 2.5em;
   height: 100%;
 }
 
 .content {
   /* Adjust the width and height as needed */
-  width: 90%;
-  height: 200px;
-  padding: 0 20px 0 50px;
+  width: 100%;
 }
 
 .contrast {
