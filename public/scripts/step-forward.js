@@ -110,7 +110,7 @@ window.counters.registersubmissionListener((val) => {
       <div class="demo-card-body">
         <p>Email Address: ${email}</p>
         <p>Phone Number: ${phone}</p>
-        <p>Address: ${address}</p>
+        <p>Address: ${address.trim() === "" ? "N/A" : address}</p>
         <p>Total Repairs: $${total}</p>
       </div>
     `;
