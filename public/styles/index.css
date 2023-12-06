@@ -171,7 +171,9 @@ section.content > section:not(.currentStep) {
 }
 
 aside[id^="toast"]:not(.show) {
-  display: none;
+  visibility: hidden;
+  height: 0px;
+  transition: all 0.5s ease;
 }
 
 aside[id^="toast"].show {
@@ -182,6 +184,9 @@ aside[id^="toast"].show {
   padding: 1em;
   width: 15em;
   margin: 1em 0;
+  visibility: visible;
+  height: max-content;
+  transition: all 0.5s ease;
 }
 
 #step-1.currentStep {
