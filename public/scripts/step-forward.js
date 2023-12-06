@@ -73,14 +73,11 @@ window.counters.registerRepairListener((val) => {
 
 window.counters.registersubmissionListener((val) => {
   stepFiveContainer.classList.remove("currentStep");
-  console.log("triggered");
   if (!window.flatfileResponseData) return;
   const { flatfileResponseData } = window;
   const cards = [];
-  console.log(flatfileResponseData[0].records.length);
   const length = Math.min(6, flatfileResponseData[0].records.length);
   if (length <= 0) throw { message: "no customers found" };
-  console.log(length);
   for (let i = 0; i < length; i++) {
     const customer = flatfileResponseData[0].records[i];
     const customerId = customer.values.customerId.value;
@@ -103,7 +100,6 @@ window.counters.registersubmissionListener((val) => {
       customer.values.state?.value ? customer.values.state?.value + "," : ""
     } ${customer.values.zip?.value ? customer.values.zip?.value : ""}`;
 
-    console.log(name, email, phone, address, total);
     let card = `<div class="demo-card">`;
     const cardHeader = `
       <div class="demo-card-header">
@@ -122,14 +118,12 @@ window.counters.registersubmissionListener((val) => {
     card += cardHeader;
     card += cardBody;
     card += "</div>";
-    console.log(card);
     cards.push(card);
   }
   const cardsContainer = stepSixContainer.querySelector(
     "#demo-cards-container",
   );
   cardsContainer.innerHTML = `${cards.join("")}`;
-  console.log(cards);
   document
     .querySelectorAll(".currentStep")
     .forEach((el) => el.classList.remove("currentStep"));
