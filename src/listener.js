@@ -179,4 +179,13 @@ export const listener = FlatfileListener.create((listener) => {
       }
     },
   );
+
+  listener.on(
+    "job:completed",
+    { job: "workbook:submitActionFg" },
+    async (event) => {
+      const { spaceId } = event.context;
+      await api.space.delete(spaceId);
+    },
+  );
 });

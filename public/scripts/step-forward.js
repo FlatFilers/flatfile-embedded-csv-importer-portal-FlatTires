@@ -6,8 +6,12 @@ const stepThreeContainer = mainContainer.querySelector("#step-3");
 const stepFourContainer = mainContainer.querySelector("#step-4");
 const stepFiveContainer = mainContainer.querySelector("#step-5");
 const stepSixContainer = mainContainer.querySelector("#step-6");
+const downloadModal = maincontainer.querySelector("#downloadModal");
 
 // Buttons
+const downloadModalCloseButton = maincontainer.querySelector(
+  "#closeDownloadModal",
+);
 const stepOneButton = mainContainer.querySelector("#goto-step-2");
 const stepFourButton = mainContainer.querySelector("#goto-step-4");
 const stepFiveButton = mainContainer.querySelector("#goto-step-5");
