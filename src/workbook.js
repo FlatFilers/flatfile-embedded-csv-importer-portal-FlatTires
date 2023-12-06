@@ -143,4 +143,7 @@ export const workbook = {
   settings: {
     trackChanges: true,
   },
+  metadata: {
+    showSpaceInfo: false,
+  },
 };
